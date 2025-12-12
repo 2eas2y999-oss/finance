@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saving Goals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Saving Goals</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="records.html">Records</a>
+        <a href="goals.html">Saving Goals</a>
+    </nav>
+</header>
+
+<section class="summary">
+    <h2>Add New Saving Goal</h2>
+
+    <form id="goal-form">
+        <label>Goal Name:</label>
+        <input type="text" id="goal-name" required>
+
+        <label>Target Amount (RM):</label>
+        <input type="number" id="goal-target" step="0.01" required>
+
+        <label>Current Saved (RM):</label>
+        <input type="number" id="goal-current" step="0.01" value="0" required>
+
+        <button type="submit">Add Goal</button>
+    </form>
+</section>
+
+<section class="summary">
+    <h2>All Goals</h2>
+
+    <table id="goal-table">
+        <thead>
+            <tr>
+                <th>Goal</th>
+                <th>Saved</th>
+                <th>Target</th>
+                <th>Progress</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- goals inserted here -->
+        </tbody>
+    </table>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

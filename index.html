@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couple Finance - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Couple Finance Dashboard</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="records.html">Records</a>
+            <a href="goals.html">Saving Goals</a>
+        </nav>
+    </header>
+
+    <section class="summary">
+        <h2>Overview</h2>
+        <div class="summary-box">
+            <p>Total Spent: RM <span id="total-spent">0</span></p>
+            <p>This Month: RM <span id="month-spent">0</span></p>
+        </div>
+    </section>
+
+    <section class="actions">
+        <h2>Quick Actions</h2>
+        <button onclick="location.href='records.html'">Add New Record</button>
+        <button onclick="location.href='goals.html'">View Saving Goals</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
