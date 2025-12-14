@@ -1,35 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Couple Finance - Records</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+// ------------------ Init Storage ------------------
+if (!localStorage.getItem("records")) {
+    localStorage.setItem("records", JSON.stringify([]));
+}
 
-<header>
-    <h1>Expense Records</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="records.html">Records</a>
-        <a href="goals.html">Saving Goals</a>
-    </nav>
-</header>
+let records = JSON.parse(localStorage.getItem("records"));
 
-<section class="summary">
-    <h2>Add New Record</h2>
+// ------------------ Set Type ------------------
+function setType(value) {
+    document.getElementById("type").value = value;
+}
 
-    <form id="record-form">
-        <!-- Store income / expense -->
-        <input type="hidden" id="type" value="income">
+// ------------------ Add New Record ------------------
+const form = document.getElementById("record-form");
 
-        <!-- Type selector -->
-        <div class="type-selector">
-            <button type="button" onclick="setType('income')">➕ Add</button>
-            <button type="button" onclick="setType('expense')">➖ Spend</button>
-        </div>
+if (form) {
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-        <label>Description:</label>
-        <input type="text"
+        let type = document.getElementById("type").value;
+        let desc = document.getElementById("desc").value;
+        let amount = parseFloat(document.getElementById("amount").value);
+        let date = document.getElementById("date").value;
 
+        let newRecord = {
+            type: type,
+            desc: desc,
+            amount: amount,
+            date: date
+        };
+
+        records.push(newRecord);
+        localStorage.setItem("records", JSON.stringify(records));
+
+        location.reload();
+    });
+}
+
+// ------------------ Display Records + Balance ------------------
+const tableBody = document.querySelector("#record-table tbody");
+
+let balance = 0;
+
+if (tableBody) {
+    records.forEach(r => {
+        if (r.type === "income") {
+            balance += r.amount;
+        } else {
+            balance -= r.amount;
+        }
+
+        let row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${r.type}</td>
+            <td>${r.desc}</td>
+            <td>${r.amount.toFixed(2)}</td>
+            <td>${r.date}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+console.log("Current Balance:", balance);
