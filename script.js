@@ -116,3 +116,8 @@ if (goalTable) {
         goalTable.appendChild(row);
     });
 }
+
+function setType(value) {
+    document.getElementById("type").value = value;
+}
+
