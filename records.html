@@ -21,6 +21,13 @@
     <h2>Add New Record</h2>
 
     <form id="record-form">
+        <input type="hidden" id="type" value="income">
+        <div class="type-selector">
+    <button type="button" onclick="setType('income')">➕ Add</button>
+    <button type="button" onclick="setType('expense')">➖ Spend</button>
+</div>
+
+
         <label>Description:</label>
         <input type="text" id="desc" required>
 
@@ -53,3 +60,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
